@@ -11,20 +11,17 @@ service_account_info = st.secrets["earthengine"]
 # Tambahkan SCOPES untuk Earth Engine
 SCOPES = ['https://www.googleapis.com/auth/earthengine.readonly']
 
-# Buat credentials
 credentials = service_account.Credentials.from_service_account_info(
     service_account_info,
     scopes=SCOPES
 )
 
-# Inisialisasi Earth Engine
 ee.Initialize(credentials)
 
 
 st.set_page_config(layout="wide")
 st.title("Sistem GeoAI Monitoring")
 
-# ROI (Region of Interest)
 roi = ee.Geometry.Rectangle([113.35, -7.22, 113.38, -7.19])
 years = [2015, 2020, 2024]
 
