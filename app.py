@@ -22,7 +22,7 @@ ee.Initialize(credentials)
 
 
 st.set_page_config(layout="wide")
-st.title("NDWI Tahun 2015, 2020, dan 2024")
+st.title("Sistem GeoAI Monitoring")
 
 # ROI (Region of Interest)
 roi = ee.Geometry.Rectangle([113.35, -7.22, 113.38, -7.19])
@@ -82,7 +82,6 @@ for item in layers:
     Map.addLayer(item['water_vector'], {"color": "blue"}, f"Water {year}")
     Map.addLayer(item['land_vector'], {"color": "green"}, f"Land {year}")
 
-st.subheader("Visualisasi NDWI Tahun 2015, 2020, dan 2024")
 col1, col2 = st.columns([4, 1])  # 80% - 20%
 with col1:
     Map.to_streamlit(height=600, width=int(0.8 * 3000))
