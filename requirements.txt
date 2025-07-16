@@ -5,4 +5,8 @@ pandas>=1.3.0
 folium>=0.14.0
 setuptools
 google-auth
+earthengine-api
+google-auth-oauthlib
+
+
 
