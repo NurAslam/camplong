@@ -3,14 +3,15 @@ import ee
 import geemap.foliumap as geemap
 import streamlit as st
 import pandas as pd
+from google.oauth2 import service_account
 
-# Ambil credential dari Streamlit secrets
+# Ambil isi credential dari Streamlit Secrets
 service_account_info = st.secrets["earthengine"]
 
-credentials = ee.ServiceAccountCredentials(
-    service_account_info["client_email"],
-    service_account_info
-)
+# Buat credentials dari dictionary
+credentials = service_account.Credentials.from_service_account_info(service_account_info)
+
+# Inisialisasi Earth Engine dengan kredensial
 ee.Initialize(credentials)
 
 
