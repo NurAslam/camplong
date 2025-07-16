@@ -5,13 +5,19 @@ import streamlit as st
 import pandas as pd
 from google.oauth2 import service_account
 
-# Ambil isi credential dari Streamlit Secrets
+# Ambil dari secrets
 service_account_info = st.secrets["earthengine"]
 
-# Buat credentials dari dictionary
-credentials = service_account.Credentials.from_service_account_info(service_account_info)
+# Tambahkan SCOPES untuk Earth Engine
+SCOPES = ['https://www.googleapis.com/auth/earthengine.readonly']
 
-# Inisialisasi Earth Engine dengan kredensial
+# Buat credentials
+credentials = service_account.Credentials.from_service_account_info(
+    service_account_info,
+    scopes=SCOPES
+)
+
+# Inisialisasi Earth Engine
 ee.Initialize(credentials)
 
 
