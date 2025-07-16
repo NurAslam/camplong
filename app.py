@@ -4,12 +4,15 @@ import geemap.foliumap as geemap
 import streamlit as st
 import pandas as pd
 
-# Inisialisasi Earth Engine dengan Service Account
-SERVICE_ACCOUNT = 'streamlit-access@testing-460608.iam.gserviceaccount.com'
-KEY_PATH = 'ee-service-account.json'
+# Ambil credential dari Streamlit secrets
+service_account_info = st.secrets["earthengine"]
 
-credentials = ee.ServiceAccountCredentials(SERVICE_ACCOUNT, KEY_PATH)
+credentials = ee.ServiceAccountCredentials(
+    service_account_info["client_email"],
+    service_account_info
+)
 ee.Initialize(credentials)
+
 
 st.set_page_config(layout="wide")
 st.title("NDWI Tahun 2015, 2020, dan 2024")
